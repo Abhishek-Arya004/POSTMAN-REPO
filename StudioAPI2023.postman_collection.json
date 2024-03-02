@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9154250a-dee7-4932-a2c5-e02db3ef118a",
+		"_postman_id": "07f571a6-be3c-4d77-994d-a439d6c08f30",
 		"name": "StudioAPI2023",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14411203"
@@ -8,12 +8,33 @@
 	"item": [
 		{
 			"name": "LoginAPI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200,201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"arya.kr.qa@gmail.com\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"vaishali@yopmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"raw": "{\r\n    \"email\": \"arya.kr.qa@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -32,19 +53,145 @@
 						"users",
 						"sign_in"
 					]
-				},
-				"description": "\n### Sign In User\n\nThis endpoint allows users to sign in to the application.\n\n#### Request Body\n- email (string, required): The email of the user.\n- password (string, required): The password of the user.\n\nExample:\n```json\n{\n  \"email\": \"user@example.com\",\n  \"password\": \"********\"\n}\n```\n\n#### Response\n- Status: 422\n- Content-Type: application/json\n\n```json\n{\n  \"message\": \"\",\n  \"errors\": {\n    \"password\": [\"\"]\n  }\n}\n```\n"
+				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "LoginAPI-Saved Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"arya.kr.qa@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-staging-builder.engineer.ai/users/sign_in",
+							"protocol": "https",
+							"host": [
+								"api-staging-builder",
+								"engineer",
+								"ai"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 23 Feb 2024 10:49:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "_session_id=eUE2eGpaS2JoREo0d1czd2RXNU42RVhxK2VCMTF2R3ZzWFZhbXIxYml5ckwrVkgzM3lsT2FyWWNvRzN1ZUR2L0pDM1lMemUvSEN1Ky9ySTAvZVFycTBZaXgrZENROTNkTExJVEtGaGlOSFA5bW9uaWh6SUdQVE0vOWVxemo1a1NtbjV6eisrK20rL283TlhqbGlCNFhUUm1tTUZ4aE0zSktxOG1aUnkwYVVhbFBmR2t0SGNnb3FTS0lHUThtY2tILS1jVVNhbVNrbmhwK1RLZU50RzI1SXJ3PT0%3D--6237bd953cd8ad9f98176a6423e22d7534d7b553; path=/; HttpOnly"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "_engineerai_session=NzRBdmloRUFiR1J6cUJVTlpjZ2Y5cHNGQnhWSnY2VFlVQWxGbmZuNDdubk1YRkwzbFdDSEtWQVZYQ1RZSXJzNGpRV0ZUU1A2cUlVdngzdDRwc2VZU0I2dUUwcVhlNjR1ZW5WT1lybmNnYnA0UVR3anRzWG9vZVhkME9LNzBqTmR5SEp5aXhJNUJKc0JEZ3ZVdmk2UjVjYUduTnpSVS84bVBFakZ6YjNiQkhYaTFSYk5GZmxyVWdrV1ZLSms4OC9SLS1mWHUweVUwSVdYZzk3cHh3NDBNSkhnPT0%3D--15c06cad85c9967ab5a56209a48778d0bdc94ddc; path=/; HttpOnly"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4c5b4e89ec3d93c4b839cb5258de7b8f\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "a28683ca9aeb48b687250ebddc4ba127"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.194518"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15724800; includeSubDomains"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"id\": 191748,\n        \"first_name\": \"Tia\",\n        \"last_name\": \"Gerlach\",\n        \"email\": \"arya.kr.qa@gmail.com\",\n        \"nda_signed\": false,\n        \"source\": \"studio\",\n        \"phone_number\": \"+91-9696761453\",\n        \"signup_stage\": null,\n        \"utm_source\": \"\",\n        \"utm_campaign\": \"\",\n        \"utm_medium\": \"\",\n        \"pm_dashboard_token\": null,\n        \"user_type\": \"User\",\n        \"origin\": \"staging\",\n        \"address_disabled\": false,\n        \"organisation\": null,\n        \"billing_entity\": null,\n        \"bant_answers\": [\n            [\n                \"What best describes you?\",\n                \"Manager\"\n            ],\n            [\n                \"Size of your company?\",\n                \"10 to 50 people\"\n            ],\n            [\n                \"When do you need your software delivered?\",\n                \"12 to 24 months\"\n            ],\n            [\n                \"How much do you expect to spend?\",\n                {\n                    \"key\": \"₹2,000,000 to ₹4,000,000\",\n                    \"value\": \"₹4,000,000\"\n                }\n            ],\n            [\n                \"Which app category would it fit into?\",\n                \"Utilities\"\n            ]\n        ],\n        \"spec_call_nda_signed\": null,\n        \"enterprise_lead\": false,\n        \"profile_image\": null,\n        \"referral_code\": \"C857f9e\",\n        \"price_multiplier\": 1,\n        \"enable_referral_code\": false,\n        \"region\": null,\n        \"sub_region\": null,\n        \"message_preferences\": null,\n        \"bypass_bnpl\": false,\n        \"is_self_serve_user\": null,\n        \"user_profiles\": [],\n        \"authtoken\": \"XadrXCPf5u2rjaSzE_yQ\",\n        \"currency\": {\n            \"data\": {\n                \"id\": \"1\",\n                \"type\": \"currency\",\n                \"attributes\": {\n                    \"id\": 1,\n                    \"name\": \"Indian Rupee\",\n                    \"code\": \"INR\",\n                    \"exchange_rate\": 76.322247,\n                    \"multiplier\": 0.3,\n                    \"symbol\": \"₹\",\n                    \"country_code\": \"IN\",\n                    \"default_store_promo_code\": \"freewebind\",\n                    \"specing_price\": 4999,\n                    \"icon_image_file_url\": \"https://bstudio-staging.azureedge.net/alpha-stg-assets/uploads/image/file/591a9aa714c49f7f467463f6/Rupee.svg\",\n                    \"instant_spec_price\": 4999,\n                    \"custom_prototype_price\": 21185.5932203389,\n                    \"post_upfront_price\": 40000,\n                    \"effective_upfront_discount\": 20,\n                    \"tax_type\": \"GST\",\n                    \"tax\": 18\n                }\n            }\n        },\n        \"roles\": \"\",\n        \"running_project_count\": 0,\n        \"external_billing_accounts\": {\n            \"data\": []\n        },\n        \"vip\": false,\n        \"setting\": {\n            \"avatar_details\": {\n                \"color_codes\": {\n                    \"background\": \"#B388FF\",\n                    \"chat_handle\": \"#7C4DFF\"\n                },\n                \"initials\": \"AA\"\n            }\n        },\n        \"company_id\": null,\n        \"country_iso_3\": null,\n        \"is_eligibile_for_bnpl\": false\n    },\n    \"message\": \"Signed in successfully\"\n}"
+				}
+			]
 		},
 		{
 			"name": "LoginAPI Copy_incorrectUsername",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{email: \"vaishali@yopmail.com\", password: \"12345678\"}"
+					"raw": "{\r\n    \"email\": \"arya.kr.qa1@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "https://api-staging-builder.engineer.ai/users/sign_in",
@@ -64,12 +211,25 @@
 		},
 		{
 			"name": "LoginAPI Copy 2_incorrectPass",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"vaishali@yopmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"raw": "{\r\n    \"email\": \"arya.kr.qa1@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -94,6 +254,19 @@
 		},
 		{
 			"name": "LoginAPI Copy 3_Bothincorrect",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
