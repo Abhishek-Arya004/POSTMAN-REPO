@@ -109,7 +109,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delreq",
 					"id": "440096cc-572b-4bbc-89a5-bf80651b94de",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
